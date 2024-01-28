@@ -1,87 +1,114 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-  <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.example.maven-project</groupId>
-  <artifactId>maven-project</artifactId>
-  <packaging>pom</packaging>
-  <version>1.0-SNAPSHOT</version>
-  <name>Maven Project</name>
-  <description>Sample Maven project with a working, deployable site.</description>
-  <url>http://www.example.com</url>
+    <groupId>com.example.maven-project</groupId>
+    <artifactId>maven-project</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>Maven Project</name>
+    <description>Sample Maven project with a working, deployable site.</description>
+    <url>http://www.example.com</url>
 
-  <properties>
-    <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
-  </properties>
+    <properties>
+        <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
+    </properties>
 
-  <modules>
-    <module>server</module>
-    <module>webapp</module>
-  </modules>
+    <modules>
+        <module>server</module>
+        <module>webapp</module>
+    </modules>
 
-  <distributionManagement>
-    <site>
-      <id>site-server</id>
-      <name>Test Project Site</name>
-      <url>file:///tmp/maven-project-site</url>
-    </site>
-  </distributionManagement>
+    <distributionManagement>
+        <site>
+            <id>site-server</id>
+            <name>Test Project Site</name>
+            <url>file:///tmp/maven-project-site</url>
+        </site>
+    </distributionManagement>
 
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
 
-      <plugin>
-        <artifactId>maven-release-plugin</artifactId>
-        <version>2.2.1</version>
-        <configuration>
-          <autoVersionSubmodules>true</autoVersionSubmodules>
-        </configuration>
-      </plugin>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                </configuration>
+            </plugin>
 
-      <plugin>
-        <artifactId>maven-site-plugin</artifactId>
-        <version>3.0</version>
-        <configuration>
-          <reportPlugins>
-            <!-- ... Tus otros reportPlugins ... -->
-          </reportPlugins>
-        </configuration>
-      </plugin>
-    </plugins>
+            <plugin>
+                <artifactId>maven-site-plugin</artifactId>
+                <configuration>
+                    <reportPlugins>
+                        <plugin>
+                            <artifactId>maven-checkstyle-plugin</artifactId>
+                        </plugin>
 
-    <pluginManagement>
-      <plugins>
-        <!-- ... Tus otros plugins en el pluginManagement ... -->
-      </plugins>
-    </pluginManagement>
-  </build>
+                        <plugin>
+                            <artifactId>maven-jxr-plugin</artifactId>
+                        </plugin>
 
-  <dependencyManagement>
-    <dependencies>
-      <!-- ... Tus otras dependencias ... -->
-    </dependencies>
-  </dependencyManagement>
+                        <plugin>
+                            <artifactId>maven-javadoc-plugin</artifactId>
+                        </plugin>
 
-  <scm>
-    <connection>scm:git:git@github.com:jleetutorial/maven-project.git</connection>
-    <developerConnection>scm:git:git@github.com:jleetutorial/maven-project.git</developerConnection>
-    <tag>HEAD</tag>
-    <url>http://github.com/jleetutorial/maven-project</url>
-  </scm>
+                        <plugin>
+                            <artifactId>maven-pmd-plugin</artifactId>
+                        </plugin>
 
-  <prerequisites>
-    <maven>3.0.3</maven>
-  </prerequisites>
+                        <plugin>
+                            <artifactId>maven-surefire-report-plugin</artifactId>
+                        </plugin>
+
+                        <plugin>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>findbugs-maven-plugin</artifactId>
+                        </plugin>
+
+                        <plugin>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>taglist-maven-plugin</artifactId>
+                        </plugin>
+                    </reportPlugins>
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <pluginManagement>
+            <plugins>
+                <!-- Otros plugins aquí... -->
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Dependencias aquí... -->
+        </dependencies>
+    </dependencyManagement>
+
+    <scm>
+        <connection>scm:git:git@github.com:jaimesg00/maven-project.git</connection>
+    <developerConnection>scm:git:git@github.com:jaimesg00/maven-project.git</developerConnection>
+        <tag>HEAD</tag>
+        <url>http://github.com/jaimesg00/maven-project</url>
+    </scm>
+
+    <prerequisites>
+        <maven>3.0.3</maven>
+    </prerequisites>
 
 </project>
 
